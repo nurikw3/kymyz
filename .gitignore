@@ -5,9 +5,6 @@ __pycache__/
 *.pyc
 *.pyo
 
-# артефакты моделей — регенерируются через src/train.py
-models/*.pkl
-
 # системное
 .DS_Store
 
