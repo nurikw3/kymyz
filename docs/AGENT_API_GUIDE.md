@@ -17,16 +17,27 @@ API. Наша сторона — только API. Твоя сторона — U
 
 ## 2. Запуск API
 
+**Способ 1 — Docker (рекомендуется, ничего ставить не надо).** Модели `models/*.pkl`
+уже внутри образа, обучение при старте НЕ идёт.
 ```bash
-# из корня проекта
+docker compose up            # поднимает API на http://localhost:8000
+docker compose up --build    # если менял код/модели — пересобрать
+docker compose down          # остановить
+```
+
+**Способ 2 — локально (нужен Python 3.11 + зависимости).**
+```bash
+uv pip install --python .venv/bin/python -r requirements.txt
 PYTHONPATH=src .venv/bin/uvicorn api.main:app --port 8000
+# модели уже в models/*.pkl; если их нет: PYTHONPATH=src python src/train.py
 ```
 
 - Swagger UI (интерактивно): `http://localhost:8000/docs`
 - OpenAPI JSON (для кодогенерации клиента): `http://localhost:8000/openapi.json`
+- Проверка готовности: `GET /health` → `{"status":"ok", "models":[...]}`
 
-Модели грузятся из `models/*.pkl` при старте. Если их нет — сначала
-`PYTHONPATH=src .venv/bin/python src/train.py`.
+> Все запросы к API одинаковы независимо от способа запуска — базовый URL
+> `http://localhost:8000`. Твой UI/симулятор обращается к нему по HTTP.
 
 ## 3. Структуры данных
 
