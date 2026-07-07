@@ -1,0 +1,15 @@
+{
+  "Cu_matte": {
+    "rolling": {
+      "R2_mean": 0.778,
+      "R2_last": 0.823,
+      "MAE_mean": 1.6192
+    },
+    "demo": {
+      "target": "Cu_matte",
+      "MAE_persistence": 3.8029,
+      "MAE_softsensor": 0.6476,
+      "improvement_pct": 83.0
+    }
+  }
+}

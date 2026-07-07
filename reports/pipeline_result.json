@@ -1,0 +1,78 @@
+{
+  "charge_estimation": {
+    "Cu_charge": {
+      "soft_R2": 0.018,
+      "soft_MAE": 1.653,
+      "persist_MAE": 0.409
+    },
+    "Zn_charge": {
+      "soft_R2": -0.392,
+      "soft_MAE": 0.686,
+      "persist_MAE": 0.165
+    },
+    "CaO_charge": {
+      "soft_R2": -0.389,
+      "soft_MAE": 0.113,
+      "persist_MAE": 0.029
+    },
+    "SiO2_charge": {
+      "soft_R2": -0.269,
+      "soft_MAE": 1.062,
+      "persist_MAE": 0.334
+    },
+    "Fe_charge": {
+      "soft_R2": 0.366,
+      "soft_MAE": 0.839,
+      "persist_MAE": 0.256
+    },
+    "S_charge": {
+      "soft_R2": 0.778,
+      "soft_MAE": 0.386,
+      "persist_MAE": 0.272
+    }
+  },
+  "demo": {
+    "charge_source": "lab_persistence",
+    "estimated_charge": {
+      "Cu_charge": 14.647,
+      "Zn_charge": 3.682,
+      "CaO_charge": 1.222,
+      "SiO2_charge": 11.881,
+      "Fe_charge": 28.336,
+      "S_charge": 32.182
+    },
+    "soft_S_charge": 32.22,
+    "estimated_matte": 56.301,
+    "current_products": {
+      "Cu_slag": 0.952,
+      "Cu_matte": 54.453,
+      "melt_temperature": 1243.426,
+      "SO2_out": 10.91,
+      "melt_level": 1.517,
+      "Fe_slag": 41.426,
+      "SiO2_slag": 28.669,
+      "Zn_slag": 4.678,
+      "CaO_slag": 2.919
+    },
+    "recommended_levers": {
+      "charge_flow": 93.015,
+      "concentrate_flow": 61.89,
+      "coal_flow": 6.604,
+      "coal_dust_flow": 2.884,
+      "addition_flow": 13.875,
+      "air_flow": 78.034,
+      "oxygen_flow": 201.921,
+      "oxygen_concentration": 52.091,
+      "natural_gas_flow": 709.303
+    },
+    "cu_slag_before": 0.952,
+    "cu_slag_after": 0.7353,
+    "cu_slag_gain_pct": -22.8,
+    "feasible": true,
+    "violations": []
+  },
+  "shift_detector": {
+    "recall_pct": 100.0,
+    "lead_hours": 7.3
+  }
+}

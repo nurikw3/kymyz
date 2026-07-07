@@ -1,0 +1,13 @@
+.venv/
+.git/
+__pycache__/
+**/__pycache__/
+*.pyc
+models/
+mics/
+deprecated/
+reports/
+notebooks/
+.DS_Store
+*.md
+docs/

@@ -1,0 +1,55 @@
+{
+  "batch_summary": {
+    "n_points": 15,
+    "cu_slag_before": 1.6504,
+    "cu_slag_after": 0.8107,
+    "cu_slag_gain_pct": -50.9,
+    "resource_gain_pct": -5.6,
+    "feasible_pct": 100.0
+  },
+  "current_levers": {
+    "charge_flow": 94.585,
+    "concentrate_flow": 71.182,
+    "coal_flow": 7.642,
+    "coal_dust_flow": 2.969,
+    "addition_flow": 15.992,
+    "air_flow": 78.884,
+    "oxygen_flow": 215.507,
+    "oxygen_concentration": 53.547,
+    "natural_gas_flow": 785.691
+  },
+  "best_levers": {
+    "charge_flow": 98.647,
+    "concentrate_flow": 72.122,
+    "coal_flow": 6.513,
+    "coal_dust_flow": 2.588,
+    "addition_flow": 16.289,
+    "air_flow": 78.667,
+    "oxygen_flow": 206.032,
+    "oxygen_concentration": 51.78,
+    "natural_gas_flow": 748.09
+  },
+  "targets_before": {
+    "Cu_slag": 1.597,
+    "oxygen_flow": 215.507,
+    "natural_gas_flow": 785.691,
+    "coal_flow": 7.642,
+    "coal_dust_flow": 2.969,
+    "melt_temperature": 1243.92,
+    "Cu_matte": 59.635,
+    "SO2_out": 10.948,
+    "melt_level": 1.516
+  },
+  "targets_after": {
+    "Cu_slag": 0.797,
+    "oxygen_flow": 206.032,
+    "natural_gas_flow": 748.09,
+    "coal_flow": 6.513,
+    "coal_dust_flow": 2.588,
+    "melt_temperature": 1234.634,
+    "Cu_matte": 53.484,
+    "SO2_out": 9.187,
+    "melt_level": 1.517
+  },
+  "violations": []
+}

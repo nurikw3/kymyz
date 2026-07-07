@@ -1,0 +1,15 @@
+{
+  "monitored": [
+    "SO2_out",
+    "melt_temperature",
+    "melt_level",
+    "offgas_temperature"
+  ],
+  "natural_point_anomalies": 261,
+  "natural_drift_episodes": 69,
+  "injection_recall_pct": 83.3,
+  "injection_latency_min_mean": 184.0,
+  "charge_shift_true": 13,
+  "charge_shift_recall_pct": 100.0,
+  "charge_shift_lead_hours": 7.3
+}
