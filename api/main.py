@@ -80,6 +80,14 @@ def detect_anomaly(online: OnlineSnapshot):
     return svc.detect_anomaly(online.model_dump())
 
 
+@app.get("/demo/scenario", tags=["detect"])
+def demo_scenario(n: int = 300, faults: int = 3):
+    """Демо-сценарий с заложенными отклонениями (датасет чистый — вставляем сбои).
+    Проигрывать по порядку через /stream/step: детектор аномалий загорится на
+    размеченных участках `injected`. Для показа 'раннего выявления отклонений'."""
+    return svc.demo_scenario(n=n, n_faults=faults)
+
+
 @app.post("/stream/step", tags=["stream"])
 def stream_step(req: StreamRequest):
     """Полный проход для одного среза потока (для симуляции датчиков): оценки + детекторы

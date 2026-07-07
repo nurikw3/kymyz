@@ -116,3 +116,36 @@ class FurnaceService:
             out[c] = {"min": round(float(s.min()), 3), "median": round(float(s.median()), 3),
                       "max": round(float(s.max()), 3)}
         return out
+
+    def demo_scenario(self, n: int = 300, n_faults: int = 3) -> dict:
+        """Демо-сценарий: реальные срезы с ЗАЛОЖЕННЫМИ отклонениями + разметка.
+
+        Для показа детектора аномалий: наш датасет чистый (сбоев нет), поэтому вставляем
+        физичные отклонения (дрейф температуры, скачок SO2, всплеск темп. газов).
+        Проигрывать через /stream/step — детектор загорится на размеченных участках.
+        """
+        import numpy as np
+        n = max(n, 90)                       # минимум, чтобы уместить отклонения
+        rows = self.df.iloc[-n:].reset_index(drop=True).copy()
+        rng = np.random.default_rng(0)
+        lo, hi = max(10, n // 10), n - max(60, n // 6)   # валидное окно расстановки
+        span = np.arange(lo, hi)
+        n_faults = max(1, min(n_faults, len(span)))
+        starts = sorted(int(x) for x in rng.choice(span, size=n_faults, replace=False))
+        injected = []
+        for i, s in enumerate(starts):
+            kind = i % 3
+            if kind == 0:
+                L = 40; rows.loc[s:s + L, "melt_temperature"] += np.linspace(0, 18, L + 1)
+                ch, t = "melt_temperature", "дрейф температуры расплава"
+            elif kind == 1:
+                L = 30; rows.loc[s:s + L, "SO2_out"] += 3.0
+                ch, t = "SO2_out", "скачок SO2"
+            else:
+                L = 25; rows.loc[s:s + L, "offgas_temperature"] += np.linspace(0, 40, L + 1)
+                ch, t = "offgas_temperature", "всплеск температуры отходящих газов"
+            injected.append({"start": s, "end": s + L, "channel": ch, "type": t})
+        samples = [{k: round(float(r[k]), 4) for k in ONLINE} for _, r in rows.iterrows()]
+        return {"samples": samples, "injected": injected,
+                "note": "проигрывать по порядку через /stream/step; "
+                        "regime_anomaly.anomaly загорится на участках injected"}
